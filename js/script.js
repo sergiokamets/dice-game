@@ -37,6 +37,7 @@ const init = function () {
   player0El.classList.remove('player--winner');
   player0El.classList.add('player--active');
   player1El.classList.remove('player--winner', 'player--active');
+  document.getElementById('players').classList.remove('player--winners');
 };
 
 // init the game
@@ -77,18 +78,17 @@ btnHold.addEventListener('click', function () {
     scores[activePlayer];
 
   // 2. Check if player score is >= 100
-  if (scores[activePlayer] >= 100) {
+  if (scores[activePlayer] >= 10) {
     playing = false;
     diceEl.classList.add('hidden');
+    document.getElementById('players').classList.add('player--winners');
     document
       .querySelector(`.player--${activePlayer}`)
-      .classList.remove('player--active');
+      .classList.add('player--active');
     document
       .querySelector(`.player--${activePlayer}`)
       .classList.add('player--winner');
   }
-
-  // 3. Switch player
   switchPlayer();
 });
 

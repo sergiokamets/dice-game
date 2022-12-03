@@ -42,7 +42,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.75s;
+  transition: opacity 0.75s, transform 0.75s;
 }
 
 /* ELEMENTS */
@@ -168,4 +168,72 @@ main {
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 768px) {
+  main {
+    height: 95%;
+  }
+  body {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  .player {
+    padding: 6rem 4rem;
+  }
+  .player:not(.player--active):not(.player--winner) {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+  }
+  .player--0:not(.player--active):not(.player--winner) {
+    transform: translateX(-100%);
+  }
+  .player--1:not(.player--active):not(.player--winner) {
+    transform: translateX(100%);
+  }
+  .btn {
+    font-size: 1.4rem;
+  }
+  .btn--hold:active {
+    transform: translate(15%, 3px);
+  }
+  .btn--roll:active {
+    transform: translate(-95%, 3px);
+  }
+  .btn--new {
+    top: 1rem;
+    font-size: 0;
+    text-align: left;
+    display: block;
+    width: 54px;
+    padding: 10px;
+    left: 90%;
+  }
+
+  .btn--roll {
+    top: 36.3rem;
+    left: 50%;
+    transform: translateX(-95%);
+  }
+  .btn--hold {
+    top: 36.3rem;
+    left: 50%;
+    transform: translateX(15%);
+  }
+  .dice {
+    height: 6rem;
+    top: 24.5rem;
+  }
+  .player--winners {
+    flex-wrap: wrap;
+  }
+  .player--winners .player {
+    width: 100%;
+  }
+  .player--winners .current,
+  .player--winners .btn--hold,
+  .player--winners .btn--roll {
+    display: none;
+  }
 }
